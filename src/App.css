@@ -1,0 +1,596 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   GENERAL APP
+================================ */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;          /* full height */
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.app-inner {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;          /* centers the whole block */
+  flex: 1;
+  display: flex;
+}
+
+.content-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+/* ===============================
+   STICKY HEADER
+================================ */
+.sticky-header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: white;
+  border-bottom: 1px solid #ccc;
+}
+
+.sticky-header {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 10px 0 15px 0;
+}
+
+.form-title {
+  font-size: 1.4em;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: #003366;
+}
+
+.sticky-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  margin-left: auto;
+  max-width: 120px;
+  height: auto;
+}
+
+.step-indicator {
+  font-weight: bold;
+  font-size: 0.95em;
+  margin-top: 8px;
+}
+
+/* ===============================
+   HEADER BUTTONS
+================================ */
+.page-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.page-buttons button {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background-color: #0077cc;
+  color: white;
+  font-weight: 600;
+  font-size: 0.95em;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.page-buttons button.active {
+  background-color: #005fa3;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.page-buttons button:hover:not(.active) {
+  background-color: #005fa3;
+  transform: translateY(-1px);
+}
+
+.page-buttons .home-button {
+  background-color: #28a745;
+}
+
+.page-buttons .home-button:hover {
+  background-color: #1e7e34;
+}
+
+/* ===============================
+   PAGE LAYOUT
+================================ */
+.page-container {
+  flex: 1;                     /* fills remaining height */
+  overflow-y: auto;
+  overflow-x: hidden; 
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 20px;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: 10px;
+  z-index: 1;
+  padding-bottom: 150px;
+}
+
+.main-layout {
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  gap: 20px;
+  height: 100%;
+}
+
+/* MAIN FORM AREA */
+.form-area {
+  padding: 20px;
+  overflow-y: auto;        
+  overflow-x: hidden;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f9f9f9;
+}
+
+/* SIDE PANEL */
+.side-panel {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #ccc;
+  background: #fafafa;
+  overflow-y: hidden;       
+  padding: 20px;
+}
+
+/* ===============================
+   FORM GROUPS
+================================ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  gap: 4px;
+}
+
+.form-group-inline {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+input:not([type="radio"]):not([type="checkbox"]),
+textarea,
+select {
+  padding: 6px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  min-height: 30px;
+}
+
+/* Width classes */
+.xxxsmall-input { width: 40px; }
+.xxsmall-input { width: 60px; }
+.xsmall-input { width: 80px; }
+.small-input { width: 100px; }
+.smallmed-input { width: 150px; }
+.medium-input { width: 200px; }
+.large-input { width: 300px; }
+.xlarge-input { width: 400px; }
+.xxlarge-input { width: 500px; }
+.xxxlarge-input { width: 600px; }
+
+/* ===============================
+   HEADINGS & PARAGRAPHS
+================================ */
+form h2, form h3, form h4, form h5 {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #222;
+}
+
+form p, .notice-box {
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.notice-box {
+  background: #f7f7f7;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+/* ===============================
+   RADIO BUTTONS & CHECKBOXES
+================================ */
+label {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  cursor: pointer;
+  font-size: 0.95em;
+  color: #222;
+  margin: 4px 0;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 10px 0 16px 0;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 12px 0 18px 0;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+button,
+input[type="button"],
+input[type="submit"] {
+  all: unset;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  background-color: #0077cc;
+  color: white;
+  font-size: 0.95em;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin: 0 4px;
+}
+
+button:hover {
+  background-color: #005fa3;
+  transform: translateY(-1px);
+}
+
+/* ===============================
+   FOOTER NAVIGATION
+================================ */
+.footer-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);   /* centers the footer itself */
+  width: 90%;                     /* match your page width */
+  max-width: 1400px;              /* match your page width */
+  background: #f7f7f7;
+  border-top: 1px solid #ccc;
+  padding: 15px 0;
+  z-index: 9999;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.footer-note {
+  text-align: center;
+  max-width: 800px;
+  font-size: 0.85em;
+  line-height: 1.4em;
+  margin: 0 auto;
+}
+
+.footer-inner {
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+/* ===============================
+   ADDITIONAL INFO BOX
+================================ */
+.additional-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.additional-info textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 4px 6px;
+  font-size: 0.95em;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  resize: vertical;
+}
+
+/* ===============================
+   VALIDATION ERRORS
+================================ */
+.validation-errors {
+  background: #ffeaea;
+  border: 1px solid #ffb5b5;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+/* ===============================
+   ASSET ROW FIELDS
+================================ */
+.asset-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  align-items: stretch;
+}
+
+.asset-row input,
+.asset-row textarea {
+  padding: 8px 10px;
+  font-size: 0.95em;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  box-sizing: border-box;
+  min-height: 10px;
+
+  flex: 0 0 auto;   /* <-- FIX: prevents flexbox from overriding width classes */
+}
+
+.asset-input-cash { width: 130px; }
+.asset-input-unit { width: 130px; }
+.asset-input-percentage { width: 60px; }
+.asset-input-ticker { width: 80px; }
+.asset-input-investment { width: 250px; }
+.asset-input-currency { width: 90px; }
+
+.asset-row > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+/* ===============================
+   WITHDRAWAL 
+================================ */
+.max-withdrawal-checkbox {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* ===============================
+   BLANK LINE
+================================ */
+li {
+  margin-bottom: 8px;
+}
+
+.sort-code-row input {
+  flex: 0 0 auto;
+}
+
+.scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   PRINT
+================================ */
+@media print {
+  @page {
+    size: A4;       /* A4 paper */
+    margin: 20mm;   /* adjust as needed */
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .print-container {
+    width: 210mm;
+    margin: 0 auto;
+  }
+
+  .print-page {
+    width: 210mm;
+    height: 297mm;       /* A4 height */
+    overflow: hidden;    /* prevents content spilling */
+    box-sizing: border-box;
+    padding: 10mm;       /* optional, internal margin */
+    page-break-before: always;
+    page-break-after: always;
+  }
+
+  /* scale down forms that overflow */
+  .form-area {
+    max-height: 100%;
+    overflow: hidden;
+  }
+}
+
+/* ===============================
+   FIELD ROW
+================================ */
+
+.field-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.field-row label {
+  width: 40%;
+  font-weight: 600;
+}
+
+.field-row input,
+.field-row select,
+.field-row textarea {
+  width: 60%;
+  padding: 6px 8px;
+  border: 1px solid #000;
+  background: #fff;
+  border-radius: 0;
+}
+
+/* ===============================
+   INLINE FOR BUTTONS ROW
+================================ */
+
+.inline-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* spacing between items */
+  align-items: center;
+}
+
+.inline-options label {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* space between checkbox/radio and text */
+}
+
+/* ===============================
+   CARD CONTAINER
+================================ */
+
+.business-card {
+  border: 1px solid #dcdcdc;
+  background: #fafafa;
+  padding: 20px;
+  margin-bottom: 24px;
+  border-radius: 8px;
+}
+
+/* Header */
+.business-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.business-title {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+.business-card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.toggle-button,
+.remove-button,
+.add-button {
+  background: #005bbb;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.remove-button {
+  background: #c62828;
+}
+
+.add-button {
+  margin-top: 20px;
+  background: #007a33;
+}
+
+/* Body */
+.business-card-body {
+  margin-top: 20px;
+}
+
+/* Section titles */
+.section-title {
+  margin-top: 24px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Inline radio options */
+.inline-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Field rows */
+.field-row {
+  display: flex;
+  gap: 20px;
+}
+
+.field-row .field {
+  flex: 1;
+}
+
+/* Inputs */
+.large-input {
+  width: 100%;
+  padding: 10px;
+}
+
+.smallmed-input {
+  width: 250px;
+  padding: 8px;
+}
+
+.source-wealth-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
