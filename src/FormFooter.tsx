@@ -42,24 +42,11 @@ export default function FormFooter({
 
       {/* COMPANY REGULATORY FOOTER TEXT */}
       <div className="footer-note">
-
         <p>
-          RL360 Insurance Company Limited. Registered Office:
-          International House, Cooil Road, Douglas,
-          Isle of Man, IM2 2SP, British Isles.
+          RL360 Insurance Company Limited. Registered Office: International House, Cooil Road, Douglas, Isle of Man, IM2 2SP, British Isles. Registered in the Isle of  Man number 137548C.Authorised by the Isle of Man Financial Services Authority.
         </p>
-
-        <p>
-          Registered in the Isle of Man number 137548C.
-        </p>
-
-        <p>
-          Authorised by the Isle of Man Financial Services Authority.
-        </p>
-
       </div>
      </div>
     </footer>
-
   )
 }
