@@ -1,6 +1,6 @@
 import { PDFViewer } from "@react-pdf/renderer";
 import SourceOfWealthPDF from "./pdf/SourceOfWealthPDF";
-import ChgaddrPDF from "./pdf/ChgaddrPDF";
+import ChgaddrPDF from "./pdf/chgaddrpdf";
 
 type Props = {
   exitPrintView: () => void;
