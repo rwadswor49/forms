@@ -7,8 +7,8 @@ import React, {
 
 import { useForm, useFieldArray } from "react-hook-form";
 import countries from "../countries.json";
-import Card from "../components/COA/Card";
-import { useExpandableCards } from "../components/COA/useExpandableCards";
+import Card from "../components/coa/Card";
+import { useExpandableCards } from "../components/coa/useExpandableCards";
 
 export type PepEntry = { 
   surname: string;
