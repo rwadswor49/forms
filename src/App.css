@@ -202,6 +202,7 @@ select {
 .small-input { width: 100px; }
 .smallmed-input { width: 150px; }
 .medium-input { width: 200px; }
+.medlarge-input { width: 250px; }
 .large-input { width: 300px; }
 .xlarge-input { width: 400px; }
 .xxlarge-input { width: 500px; }
@@ -522,6 +523,18 @@ li {
   margin-top: 4px;
 }
 
+.business-title {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 4px;
+}
+
+
+.business-title strong {
+  font-weight: 700 !important;
+}
+
+
 .business-card-actions {
   display: flex;
   gap: 10px;
@@ -580,7 +593,12 @@ li {
 
 /* Inputs */
 .large-input {
-  width: 100%;
+  width: 300px;
+  padding: 10px;
+}
+
+.medlarge-input {
+  width: 250px;
   padding: 10px;
 }
 

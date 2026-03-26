@@ -1,32 +1,20 @@
 // src/App.tsx
 import { useState } from "react";
-
 import MultiPageForm from "./FORM-SURWDL/MultiPageForm";
 import SourceOfWealth from "./FORM-SOW/SourceOfWealth";
-import Chgaddr from "./FORM-COA/Chgaddr";
-
 import FormHeader from "./FormHeader";
 import FormFooter from "./FormFooter";
 import PrintView from "./PrintView";
 
 import "./App.css";
 
-type FormType = "menu" | "surrender" | "wealth" | "chgaddr";
+type FormType = "menu" | "surrender" | "wealth";
 
 export default function App() {
   const [activeForm, setActiveForm] = useState<FormType>("menu");
   const [printMode, setPrintMode] = useState(false);
 
-  // ---------------------------------------------
-  // CLEAR ALL CHANGE OF ADDRESS AUTOSAVE DATA
-  // ---------------------------------------------
-  const clearCOAData = () => {
-    Object.keys(localStorage)
-      .filter((k) => k.startsWith("chgaddr_"))
-      .forEach((k) => localStorage.removeItem(k));
-  };
-
-  // Load saved data for PDF (SOW only)
+  // Load saved data for PDF
   const saved = JSON.parse(localStorage.getItem("sow-data") || "{}");
 
   const pdfData = {
@@ -67,23 +55,13 @@ export default function App() {
           />
         )}
 
-        {/* CHANGE OF ADDRESS FORM */}
-        {activeForm === "chgaddr" && (
-          <Chgaddr
-            goHome={() => setActiveForm("menu")}
-            printMode={printMode}
-            setPrintMode={setPrintMode}
-            formTitle="Change of Address"
-          />
-        )}
-
         {/* MENU SCREEN */}
         {activeForm === "menu" && (
           <>
             <FormHeader
               currentPage={1}
               totalPages={1}
-              pageLabels={["Menu"]}
+              pageLabels={["Test"]}
               setCurrentPage={() => {}}
               formTitle="Available Online Forms"
               printMode={false}
@@ -108,23 +86,13 @@ export default function App() {
                       </button>
 
                       <button
-                        style={{ marginRight: "20px", padding: "12px 24px" }}
+                        style={{ padding: "12px 24px" }}
                         onClick={() => {
                           localStorage.removeItem("sow-data");
                           setActiveForm("wealth");
                         }}
                       >
                         Source of Wealth Form
-                      </button>
-
-                      <button
-                        style={{ padding: "12px 24px" }}
-                        onClick={() => {
-                          clearCOAData();
-                          setActiveForm("chgaddr");
-                        }}
-                      >
-                        Change of Address Form
                       </button>
                     </div>
                   </div>
@@ -144,7 +112,6 @@ export default function App() {
                       <h3>Hints & Tips</h3>
                       <p>The Surrender / Withdrawal form is used to request withdrawals or full surrender of an RL360 policy.</p>
                       <p>The Source of Wealth form collects information regarding income, investments, and significant assets.</p>
-                      <p>The Change of Address form updates your residential details and may require proof of address.</p>
                     </div>
                   </div>
 

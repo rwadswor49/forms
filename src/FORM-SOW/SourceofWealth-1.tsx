@@ -47,7 +47,7 @@ const WealthForm = forwardRef<any, Props>(({ data, setData }, ref) => {
     mode: "onBlur"
   });
 
-  // ✅ FIX 1: prevent infinite reset loop
+  // FIX 1: prevent infinite reset loop
   const isFirstLoad = useRef(true);
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const WealthForm = forwardRef<any, Props>(({ data, setData }, ref) => {
     }
   }, [data, reset]);
 
-  // ✅ FIX 2: use proper autosave (NOT manual watch)
+  // FIX 2: use proper autosave (NOT manual watch)
   useAutoSave(watch, setData);
 
   // Expose submit + values to parent

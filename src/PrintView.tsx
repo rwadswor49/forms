@@ -1,35 +1,47 @@
 import { PDFViewer } from "@react-pdf/renderer";
 import SourceOfWealthPDF from "./pdf/SourceOfWealthPDF";
+import ChgaddrPDF from "./pdf/ChgaddrPDF";
 
 type Props = {
   exitPrintView: () => void;
-  formType: "surrender" | "wealth";
+  formType: "surrender" | "wealth" | "chgaddr";
 };
 
 export default function PrintView({ exitPrintView, formType }: Props) {
-  // Safe localStorage parsing
   let raw: any = {};
+
   try {
-    raw = JSON.parse(localStorage.getItem("sow-data") || "{}");
+    if (formType === "wealth") {
+      const sow = JSON.parse(localStorage.getItem("sow-data") || "{}");
+
+      raw = {
+        page1: sow.sourceOfWealthPage1 || {},
+        page2: sow.sourceOfWealthPage2 || {},
+        page3: sow.sourceOfWealthPage3 || {},
+        page4: sow.sourceOfWealthPage4 || {},
+        page5: sow.sourceOfWealthPage5 || {},
+        page6: sow.sourceOfWealthPage6 || {},
+        page7: sow.sourceOfWealthPage7 || {},
+        page8: sow.sourceOfWealthPage8 || {},
+        page9: sow.sourceOfWealthPage9 || {},
+        page10: sow.sourceOfWealthPage10 || {},
+        page11: sow.sourceOfWealthPage11 || {},
+        page12: sow.sourceOfWealthPage12 || {},
+        page13: sow.sourceOfWealthPage13 || {},
+      };
+    }
+
+    if (formType === "chgaddr") {
+      raw = {
+        page1: JSON.parse(localStorage.getItem("chgaddr_page1") || "{}"),
+        page2: JSON.parse(localStorage.getItem("chgaddr_page2") || "{}"),
+        page3: JSON.parse(localStorage.getItem("chgaddr_page3") || "{}"),
+        page4: JSON.parse(localStorage.getItem("chgaddr_page4") || "{}"),
+      };
+    }
   } catch {
     raw = {};
   }
-
-  const data = {
-    page1: raw.sourceOfWealthPage1 || {},
-    page2: raw.sourceOfWealthPage2 || {},
-    page3: raw.sourceOfWealthPage3 || {},
-    page4: raw.sourceOfWealthPage4 || {},
-    page5: raw.sourceOfWealthPage5 || {},
-    page6: raw.sourceOfWealthPage6 || {},
-    page7: raw.sourceOfWealthPage7 || {},
-    page8: raw.sourceOfWealthPage8 || {},
-    page9: raw.sourceOfWealthPage9 || {},
-    page10: raw.sourceOfWealthPage10 || {},
-    page11: raw.sourceOfWealthPage11 || {},
-    page12: raw.sourceOfWealthPage12 || {},
-    page13: raw.sourceOfWealthPage13 || {},
-  };
 
   return (
     <div style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
@@ -71,7 +83,13 @@ export default function PrintView({ exitPrintView, formType }: Props) {
       >
         {formType === "wealth" && (
           <PDFViewer width="800" height="1100">
-            <SourceOfWealthPDF data={data} />
+            <SourceOfWealthPDF data={raw} />
+          </PDFViewer>
+        )}
+
+        {formType === "chgaddr" && (
+          <PDFViewer width="800" height="1100">
+            <ChgaddrPDF data={raw} />
           </PDFViewer>
         )}
       </div>
