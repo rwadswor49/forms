@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import MultiPageForm from "./FORM-SURWDL/MultiPageForm";
 import SourceOfWealth from "./FORM-SOW/SourceOfWealth";
-import Chgaddr from "./FORM-COA/Chgaddr";
+import Chgaddr from "./FORM-COA/chgaddr";
 
 import FormHeader from "./FormHeader";
 import FormFooter from "./FormFooter";
