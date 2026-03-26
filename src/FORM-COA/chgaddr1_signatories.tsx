@@ -6,7 +6,7 @@ import React, {
   useState
 } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
-import Card from "../components/COA/Card";
+import Card from "../components/coa/Card";
 import countries from "../countries.json";
 
 /* ---------------------------------------------
