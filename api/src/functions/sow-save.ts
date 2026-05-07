@@ -1,13 +1,13 @@
 console.log("sow-save file executed");
 
 import { app, HttpRequest, HttpResponseInit } from "@azure/functions";
-import sql from "mssql";
+import * as sql from "mssql";
 
 /* ---------- config ---------- */
 
 const sqlConnStr = process.env.SQL_CONNECTION_STRING;
 
-let poolPromise: Promise<sql.ConnectionPool> | null = null;
+let poolPromise: Promise<any> | null = null;
 function getPool() {
   if (!sqlConnStr) throw new Error("SQL_CONNECTION_STRING is not configured");
   if (!poolPromise) poolPromise = sql.connect(sqlConnStr);

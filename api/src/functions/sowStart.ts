@@ -1,6 +1,6 @@
 import { app, HttpRequest, HttpResponseInit } from "@azure/functions";
 import crypto from "crypto";
-import sql from "mssql";
+import * as sql from "mssql";
 
 /* ---------- helpers ---------- */
 

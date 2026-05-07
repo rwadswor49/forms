@@ -1,6 +1,6 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
 import crypto from "crypto";
-import sql from "mssql";
+import * as sql from "mssql";
 import {
   BlobServiceClient,
   BlobSASPermissions,
@@ -12,7 +12,7 @@ import {
 // uploadToken payload created by /api/sow/start
 type UploadTokenPayload = {
   submissionRef: string;
-  submissionId?: string; // ✅ included if you add it in /sow/start (recommended)
+  submissionId?: string; 
   exp: number;
   nonce: string;
 };
@@ -62,7 +62,7 @@ function isoStamp() {
 /* ---------- SQL pool reuse ---------- */
 
 const sqlConnStr = process.env.SQL_CONNECTION_STRING;
-let poolPromise: Promise<sql.ConnectionPool> | null = null;
+let poolPromise: Promise<any> | null = null;
 
 function getPool() {
   if (!sqlConnStr) throw new Error("SQL_CONNECTION_STRING is not configured");

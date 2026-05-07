@@ -1,11 +1,11 @@
 import { app, HttpRequest, HttpResponseInit, InvocationContext } from "@azure/functions";
-import sql from "mssql";
+import * as sql from "mssql";
 
 /* ---------- SQL pool reuse ---------- */
 
 const sqlConnStr = process.env.SQL_CONNECTION_STRING;
 
-let poolPromise: Promise<sql.ConnectionPool> | null = null;
+let poolPromise: Promise<any> | null = null;
 
 function getPool() {
   if (!sqlConnStr) {
